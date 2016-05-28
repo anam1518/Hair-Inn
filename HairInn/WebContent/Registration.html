@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="ISO-8859-1">
+<title>Registration Form</title>
+</head>
+<body>
+<h1>Register yourself please</h1> 
+<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	 $("#getDataButton").click(function(){
+		 var url = "rest/UserService/"+document.getElementById("userid").value+"/"+document.getElementById("fistName").value+"/"+document.getElementById("lastName").value+"/"+document.getElementById("email").value+"/";
+		 $.ajax({
+		     url:url,
+		     type:'GET',
+		     dataType: "json",
+		    
+		    	 success: OnGetDataSuccess,
+		         error: OnGetDataError
+		  });
+		  
+		   });
+		  });	 
+
+
+function OnGetData(data, status) {
+    //handle the success case here
+    
+    document.getElementById("userid").value = data.username;
+    document.getElementById("password").value = data.password;
+    document.getElementById("firstName").value = data.firstName;
+    document.getElemetById("lastName").value = data.lastName;
+    document.getElemetById("email").value = data.email;
+    
+    
+ 
+    	
+    alert("success");
+    window.location.replace("HairInn/form.html");}
+    
+   function OnDataGetError(request,status,error){
+	   alert("error...!!!!"+error+" "+status);
+    
+}
+
+
+</script>
+<form name='registration'>
+<ul>
+<li><label for = "userid">UserId:</label></li>
+<li><input type = "text" id = "userid" size="12"/></li>
+<li><label for = "password">Password:</label></li>
+<li><input type = "text" id = "password" size="12"/></li>
+<li><label for = "firtName">FirstName:</label></li>
+<li><input type = "text" id = "firstName" size="18"/></li>
+<li><label for = "lasttName">LastName:</label></li>
+<li><input type = "text" id = "lastName" size="18"/></li>
+<li><label for = "email">Email:</label></li>
+<li><input type = "text" id = "email" size="50"/></li>
+
+</ul> 
+<button id="getDataButton">Submit!</button>
+</form>
+
+</body>
+
+</html>
+

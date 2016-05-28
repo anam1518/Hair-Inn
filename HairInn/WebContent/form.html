@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Login here</title>
+</head>
+<body>
+<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+ $("#getDataButton").click(function(){
+ 
+
+  
+var url="/rest/LoginService/produce"+document.getElementById("username").value+"/"+document.getElementById("password").value;
+alert(url);
+
+$.ajax({
+     url:url,
+     type:'GET',
+     dataType: "json",
+    
+    	 success: OnGetDataSuccess,
+         error: OnGetDataError
+  });
+  
+   });
+  });
+function OnGetDataSuccess(data, status) {
+    //handle the success case here
+    document.getElementById("username").value = data.username;
+   document.getElementById("password").value = data.password;
+    
+    
+    alert("success");
+}
+function OnGetDataError(request, status, error) {
+    //handle error here
+   alert("error...!!!!"+error+" "+status);
+}
+ </script>
+<div id="mainContainer">
+<form name='Login' >
+<ul>
+<li><label for = "username">UserName:</label></li>
+<li><input type = "text" id = "username" size="12"/></li>
+
+<li><label for = "password">Password:</label></li>
+<li><input type = "text" id = "password" size="12"/></li>
+</ul>
+<button id="getDataButton">Submit!</button>
+</form>
+</div>
+</body>
+</html>

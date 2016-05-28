@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+<meta charset="ISO-8859-1">
+<title>Saloon Info</title>
+</head>
+<body>
+<h1>GET SALOON INFO</h1> 
+<script type="text/javascript" src="js/jquery-1.12.3.js">
+
+<p>
+Name: <span id="name"></span><br/>
+Email: <span id="email"></span><br/>
+ContactNo: <span id="ContactNo"></span><br/>
+Address: <span id="Address"></span><br/>
+</p>
+<script type="text/javascript">
+    var JSONObject = {
+  "name":"depilex",
+  "email":"depilex.saloon",
+  "ContactNo":123456,
+  "Address":"rwpCantt"
+		
+
+	  
+    }
+</script>
+  <script>  
+    document.getElementById("name").innerHTML = JSONObject.name;
+   
+    document.getElementById("Eamil").innerHTML = JSONObject.email;
+    document.getElementById("ContactNo").innerHTML = JSONObject.ContactNo;
+    
+    
+    document.getElemetById("ContactNo").value = data.ContactNo;
+    document.getElemetById("Address").innerHTML = JSONObject.Address;
+    
+    return window.wrappedJSObject;
+    alert("success");
+    }
+    
+</script>
+
+
+</body>
+
+</html>

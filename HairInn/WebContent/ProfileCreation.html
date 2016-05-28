@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="ISO-8859-1">
+<title>ProfilePage</title>
+
+</head>
+<body>
+<h1>Create your Profile</h1>
+<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	 $("#getDataButton").click(function(){
+
+		 var url ="rest/ProfileService/"+document.getElementById("Name").value()+"/"
+		  +document.getElementById("Address").value()+"/"+document.getElementById("age").value()+"/"
+		  +document.getElementById("height").value()+"/"+document.getElementById("weight").value();
+		 alert(url);
+$.ajax({
+	  type: "GET",
+	  contentType: "application/json; charset=utf-8",
+	  url:url,
+	  data: "{'Name':'" + $("#Name").val() + "', "
+      + "'Address':'" + $("#Address").val() + "',"
+      + "'age':'" + $("#age").val() + "',"
+      + "'height':'" + $("#height").val() + "',"
+      + "'weight':'" + $("#weight").val() + "'}",
+	  dataType: "json"
+		  success: OnGetDataSuccess(),
+	         error: OnGetDataError()
+	});
+	 });
+});
+function OnGetDataSuccess(data, status) {
+    //handle the success case here
+    
+    document.getElementById("Name").value = data.Name;
+    document.getElementById("Address").value = data.Address;
+    document.getElementById("height").value = data.height;
+    document.getElementById("weight").value = data.weight;
+    document.getElementById("age").value = data.age;
+    
+    
+    
+}
+function OnGetDataError(request, status, error) {
+    //handle error here
+    alert("Error...!!!!");
+}
+</script>
+
+<div id="mainContainer">
+<form name='Profile Page'>
+<ul>
+<li><label for = "name">Name:</label></li>
+<li><input type = "text" id = "firstname" size="12"/></li>
+<li><label for = "Address">Address:</label></li>
+<li><input type = "text" id = "Address" size="60"/></li>
+<li><label for = "height">Height:</label></li>
+<li><input type = "text" id = "height" size="04"/></li>
+<li><label for = "weight">Weight:</label></li>
+<li><input type = "text" id = "Weight" size="04"/></li>
+<li><label for = "age">Age:</label></li>
+<li><input type = "text" id = "age" size="04"/></li>
+</ul> 
+
+<button id="getDataButton">Submit!</button>
+</form>
+</div>
+
+
+
+
+
+
+</body>
+</html>
