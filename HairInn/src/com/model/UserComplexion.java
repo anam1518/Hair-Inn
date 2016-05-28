@@ -2,7 +2,7 @@ package com.model;
 
 public class UserComplexion {
  private String types;
- private int userid;
+  private int userid;
 public String getTypes() {
 	return types;
 }

@@ -23,31 +23,34 @@ public class UserService {
 	UserDao userDao = new UserDao();
 
 	   @GET
-	   @Path("/user")
+	   @Path("/Produce")
 	   @Produces(MediaType.APPLICATION_JSON)
-	   public List<User> getUser(){
+ public List<User> getUser(){
 	      return userDao.getAllUser();
+	      
 	   }
 	   
 	 
 	   
 	   @GET
-		@Path("/user}")
-		public Response printMessage(@PathParam("userid") int userid, @PathParam("firstName") String firstName,@PathParam("lastName") String lastName, 
-				@PathParam("age") String age, @PathParam("weight") int weight, @PathParam("height") int height) {
+		@Path("/{userid}/{firstName}/{lastName}/{Email}")
+	   @Produces(MediaType.APPLICATION_JSON)
+		public Response printMessage(@PathParam("userid") String userid, @PathParam("firstName") String firstName,@PathParam("lastName") String lastName, @PathParam("email") String Email) {
 
+UserDao userDao = new UserDao();
 		   User usr =new User();
-		   usr.setUserid(userid);
 		   usr.setFirstName(firstName);
 		   usr.setLastName(lastName);
-		   usr.setAge(age);
-		   usr.setWeight(weight);
-		   usr.setHeight(height);
-			String result = "Your Web-Service Says: " +userid + firstName +lastName +age +weight +height;
+		   usr.setEmail(Email);
+		   
+		  
+		   userDao.addUser(usr);
+			String result = "Your Web-Service Says: " +userid + firstName +lastName +Email;
 			
 
 			return Response.status(200).entity(result).build();
 	        
 		}
+	   
 	   }  
 	

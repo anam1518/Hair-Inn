@@ -18,7 +18,7 @@ import com.model.*;
 @Path("SaloonService")
 public class SaloonService {
 	@GET
-	@Path("/Saloon")
+	@Path("/produce")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getJson(@PathParam("Saloon") String saloons) {
 
@@ -29,11 +29,11 @@ public class SaloonService {
 	}
 	
 	@GET
-	@Path("/Saloon")
+	@Path("/{saloonid,Name,email,ContactNo,Address}")
 	public Response printMessage(@PathParam("saloonid") int saloonid, @PathParam("Name") String name,
 			@PathParam("eamil")String email, @PathParam("ContactNo") String contactNo, @PathParam("Address")String address){
 		
-	
+	SaloonDao saloon = new SaloonDao();
 		Saloon s = new Saloon();
 		
 	s.setSaloonid(saloonid);
@@ -42,7 +42,7 @@ public class SaloonService {
 	s.setContactNo(contactNo);
 	s.setAddress(address);
 	
-	
+	saloon.addSaloon(s);
    String result = "Your Web-Service Says: " +saloonid +name +email +contactNo +address;
 		
 

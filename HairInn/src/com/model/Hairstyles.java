@@ -2,7 +2,7 @@ package com.model;
 
 public class Hairstyles {
 	private int hairid;
-	private String haircut;
+	 private String haircut;
 	
 	public int getHairid() {
 		return hairid;

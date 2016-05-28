@@ -2,8 +2,8 @@ package com.model;
 
 public class Hair {
 	private int hairid;
-	private String haircolor;
-	private int hairlength;
+   private String haircolor;
+ private int hairlength;
 	private int userid;
 	
 	public int getHairid() {

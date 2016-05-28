@@ -20,9 +20,9 @@ import com.model.*;
 public class FaceShapesService {
 
 	@GET
-	@Path("/faceShapes")
+	@Path("/faceshapes")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getJson(@PathParam("/faceShapes") String shapes) {
+	public Response getJson( String shapes) {
 
 		final FaceShapesDao faceshapes = new FaceShapesDao();
 
@@ -31,7 +31,7 @@ public class FaceShapesService {
 	}
 	
 	@GET
-	@Path("/faceShapes}")
+	@Path("/{param}" )
 	public Response printMessage(@PathParam("userid") int userid, @PathParam("Shapes") String shapes) {
 
 	   FaceShapes fs =new FaceShapes();
@@ -45,5 +45,4 @@ public class FaceShapesService {
         
 	}
 	
-
 }

@@ -15,10 +15,11 @@ import com.model.*;
  * @author Anam Javed
  *
  */
-@Path("/Hair")
+@Path("/HairService")
 public class HairService {
+	
 	@GET
-	@Path("/hair")
+	@Path("/produce")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response getJson(@PathParam("/hair") String hairs) {
 
@@ -29,7 +30,7 @@ public class HairService {
 	}
 	
 	@GET
-	@Path("/hair}")
+	@Path("/{param}")
 	public Response printMessage(@PathParam("userid") int userid, @PathParam("hairid") int hairid,@PathParam("haircolor") String haircolor, 
 			@PathParam("hairlength") int hairlength) {
 		Hair h = new Hair();

@@ -1,4 +1,4 @@
-package com.Dal;
+	package com.Dal;
 
 import java.sql.*;
 
@@ -9,9 +9,11 @@ public class Dal {
 	private static final String DB_URL = "jdbc:mysql://localhost/hairinn";
 	static final String USER = "root";
 	static final String PASS = "123456";
+	private static Connection conn;
 	
 	//override default constructor to prevent object creation
 	private Dal(){}
+
 
 	//Singleton access to Database Controller
 	public static Dal getDatabaseController(){
@@ -26,6 +28,7 @@ public class Dal {
 	
 	//return Connection on request
 	public Connection getConnection() {
+	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/hairinn", "root", "123456");
@@ -65,6 +68,16 @@ public class Dal {
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 		return dal;
+		
+	}
+
+
+	/**
+	 * @return
+	 */
+	public Dal getDatabase() {
+		// TODO Auto-generated method stub
+		return  getDatabase();
 	}
 	
 	

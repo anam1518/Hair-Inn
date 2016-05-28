@@ -8,41 +8,37 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import com.Dal.LoginDao;
 import com.Dal.UserDao;
+import com.model.LoginPojo;
 import com.model.User;
 
 @Path("/LoginService")
 public class LoginService {
 
 	@GET
-	@Path("/user{email,password}")
+	@Path("/produce")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response getJson(@PathParam("/user") String user) {
-
-		final UserDao usr = new UserDao();
-
-		return Response.status(200).entity(usr).build();
-
-	}
-	
-	@GET
-	@Path("/user{email,password}")
-	public Response printMessage(@PathParam("email") String email,@PathParam("password") String pass ) {
-		User usr =new User();
-		usr.setEmail(email);
-		usr.setPassword(pass);
-
-		String result = "Your Web-Service Says: " + email +pass;
+	public Response getJson(@PathParam("username")String username, @PathParam("password")String pass) {
+    
+		final LoginPojo loginPojo =new LoginPojo();
+		loginPojo.setUsername(username);
+		loginPojo.setPassword(pass);
+        final LoginDao logindao = new LoginDao();
+        logindao.verify(loginPojo);
+		
+       
+		String result = "Your Web-Service Says: " +username +pass;
 		
 
 		return Response.status(200).entity(result).build();
         
 	}
 	@GET 
-	   @Path("/user")
+	   @Path("/loginPojo")
 	   @Produces(MediaType.APPLICATION_JSON)
-	   public void VerifyLogin(User user) {
-		   return;
+	public LoginPojo verify(final LoginPojo pojo) {
+		   return pojo;
 		
 	   } 
 

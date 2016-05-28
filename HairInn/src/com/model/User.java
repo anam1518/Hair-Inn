@@ -4,17 +4,15 @@ public class User {
 	private int userid;
 	private String firstName;
 	private String lastName;
-    private String email;
+   private String email;
     private String password;
-    private int height;
+   private int height;
     private int weight;
-    private String age;
+   private String age;
 	public int getUserid() {
 		return userid;
 	}
-	public void setUserid(int userid) {
-		this.userid = userid;
-	}
+	
 	public String getFirstName() {
 		return firstName;
 	}
@@ -57,5 +55,15 @@ public class User {
 	public void setAge(String age) {
 		this.age = age;
 	}
-    
+	public void Add()
+	  {
+	  }
+	/**
+	 * @return
+	 */
+	public User retreive() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	  
 }
